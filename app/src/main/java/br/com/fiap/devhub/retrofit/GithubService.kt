@@ -11,7 +11,7 @@ interface GithubService {
     //URL Base  https://api.github.com/users
 
     @GET("{user}")
-    fun getUserByUsername(@Path("user") Username : String): Call<User>
+    fun getUserByUsername(@Path("user") Username: String): Call<User>
 
     @GET("{user}/repos")
     fun getReposbyUsername(@Path("user") Username: String): Call<List<Repository>>

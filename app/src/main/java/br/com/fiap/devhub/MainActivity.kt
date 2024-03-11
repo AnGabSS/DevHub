@@ -34,13 +34,15 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = "DevHubLogin",
                         exitTransition = {
-                            slideOutOfContainer(towards = AnimatedContentTransitionScope.SlideDirection.End) + fadeOut(animationSpec = tween(5000))
+                            slideOutOfContainer(towards = AnimatedContentTransitionScope.SlideDirection.End) + fadeOut(
+                                animationSpec = tween(5000)
+                            )
                         }
                     ) {
-                        composable(route = "DevHubLogin"){
+                        composable(route = "DevHubLogin") {
                             DevHubLogin(navController = navController)
                         }
-                        composable(route = "Perfil?username={username}"){
+                        composable(route = "Perfil?username={username}") {
                             val username = it.arguments?.getString("username")
                             DevHubPerfil(username = username!!, navController = navController)
                         }

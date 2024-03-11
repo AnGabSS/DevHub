@@ -16,33 +16,33 @@ import androidx.compose.ui.unit.dp
 import br.com.fiap.devhub.model.Repository
 
 @Composable
-fun RepositoryCard(repo : Repository){
+fun RepositoryCard(repo: Repository) {
 
-    Card (
+    Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),
         shape = RoundedCornerShape(3.dp),
         elevation = CardDefaults.cardElevation(5.dp)
-    ){
+    ) {
         Row(
             modifier = Modifier
                 .background(color = Color(0xFF3C3E4B))
                 .fillMaxWidth()
                 .padding(5.dp)
-        ){
+        ) {
             Text(text = repo.name, color = Color.White)
         }
 
-        if(repo.description != null){
+        if (repo.description != null) {
             Row(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxWidth()
-                .padding(5.dp)
-        ) {
-            Text(text = repo.description)
-        }
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ) {
+                Text(text = repo.description)
+            }
         }
 
     }
@@ -51,6 +51,6 @@ fun RepositoryCard(repo : Repository){
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun RepositoryCardPreview(){
+fun RepositoryCardPreview() {
     RepositoryCard(Repository("About-me", null))
 }

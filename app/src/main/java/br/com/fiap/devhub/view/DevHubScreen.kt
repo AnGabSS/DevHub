@@ -3,8 +3,6 @@ package br.com.fiap.devhub.view
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -24,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -41,9 +38,10 @@ import coil.request.ImageRequest
 @Composable
 fun DevHubScreen(user: User, listRepos: List<Repository>) {
 
-    Column (
+    Column(
         modifier = Modifier
-            .fillMaxWidth()){
+            .fillMaxWidth()
+    ) {
         Surface {
             Card(
                 modifier = Modifier
@@ -52,12 +50,12 @@ fun DevHubScreen(user: User, listRepos: List<Repository>) {
                 shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp),
                 colors = CardDefaults.cardColors(Color.Gray),
             ) {}
-            Column (
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 75.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ){
+            ) {
                 Card(
                     shape = RoundedCornerShape(80.dp),
                 ) {
@@ -76,38 +74,37 @@ fun DevHubScreen(user: User, listRepos: List<Repository>) {
         }
         Row(
             modifier = Modifier
-                    .fillMaxWidth(), horizontalArrangement = Arrangement.Center
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        text = user.name,
-                        fontSize = 30.sp
-                    )
-                    Text(
-                        text = user.login,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = (if (user.bio != null) user.bio else "Sem bio")!!,
-                        textAlign = TextAlign.Center
-                    )
-                }
+                .fillMaxWidth(), horizontalArrangement = Arrangement.Center
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = user.name,
+                    fontSize = 30.sp
+                )
+                Text(
+                    text = user.login,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = (if (user.bio != null) user.bio else "Sem bio")!!,
+                    textAlign = TextAlign.Center
+                )
             }
+        }
 
-            Text(
-                text = "Repositórios",
-                fontSize = 20.sp,
-                modifier = Modifier.padding(10.dp)
-            )
+        Text(
+            text = "Repositórios",
+            fontSize = 20.sp,
+            modifier = Modifier.padding(10.dp)
+        )
 
-            LazyColumn() {
-                items(listRepos) {
-                    RepositoryCard(it)
-                }
+        LazyColumn() {
+            items(listRepos) {
+                RepositoryCard(it)
             }
         }
     }
-
+}
 
 
 @Preview(showBackground = true, showSystemUi = true)
